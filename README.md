@@ -1,6 +1,6 @@
 # Project Trident Research Engine
 
-Public snapshot of the Project Trident crypto research engine, taken before the dedicated backtesting work was added.
+This public repo represents my work on research grade analysis on Crypto-Currency. Below contains instructions on setup along with some key commands.
 
 ## What This Repo Does
 
