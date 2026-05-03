@@ -1,0 +1,11 @@
+.venv/
+__pycache__/
+*.pyc
+.env
+*.db
+*.sqlite
+*.duckdb
+*.writer.lock
+backend/var/
+var/
+.DS_Store

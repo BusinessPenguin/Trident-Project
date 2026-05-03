@@ -37,12 +37,112 @@ Project Trident is a research engine only. It does not provide financial advice,
 
 The minimum useful setup is Kraken plus CoinGecko endpoint access. Optional keys deepen the research context but are not required for basic market/fundamental feature generation.
 
+## Supported Crypto Universe
+
+Project Trident is configured for five crypto symbols:
+
+- `BTC-USD` - Bitcoin
+- `ETH-USD` - Ethereum
+- `XRP-USD` - XRP
+- `SOL-USD` - Solana
+- `SUI-USD` - Sui
+
+The `.env` file should keep both research and semi-simulated paper workflows on that same universe:
+
+```env
+CRYPTO_SYMBOLS=BTC-USD,ETH-USD,XRP-USD,SOL-USD,SUI-USD
+PAPER_SYMBOLS=BTC-USD,ETH-USD,XRP-USD,SOL-USD,SUI-USD
+```
+
+## Clone The Repo
+
+Most users should clone with HTTPS:
+
+```bash
+git clone https://github.com/BusinessPenguin/Trident-Project.git
+cd Trident-Project
+```
+
+## Configuring `.env`
+
+Create your local environment file from the example template:
+
+```bash
+cp .env.example .env
+nano .env
+```
+
+For the minimum version, leave the public endpoint defaults in place:
+
+```env
+KRAKEN_BASE=https://api.kraken.com/0/public
+COINGECKO_BASE=https://api.coingecko.com/api/v3
+TRIDENT_USE_GPT=false
+```
+
+Optional API keys can be added when you want richer research context:
+
+```env
+NEWSAPI_AI_KEY=your_newsapi_ai_key_here
+FRED_API_KEY=your_fred_api_key_here
+FINNHUB_API_KEY=your_finnhub_api_key_here
+OPENAI_API_KEY=your_openai_api_key_here
+```
+
+Leave optional keys blank if you are not using that data source. Alternative.me Fear & Greed does not require a key. Do not commit your `.env` file; it is intentionally ignored by git.
+
+In `nano`, save and exit with:
+
+```text
+Ctrl + O
+Enter
+Ctrl + X
+```
+
+## Local Dependencies
+
+Project Trident is a Python CLI project. It does not require Docker, Node, npm, a separate database server, or the DuckDB terminal app.
+
+Required terminal tools:
+
+- `python3` - runs the engine and CLI.
+- `pip` - installs Python dependencies.
+- `git` - optional, only needed to clone or push the repository.
+
+Install Python first if your computer does not already have it. On macOS with Homebrew:
+
+```bash
+brew install python
+```
+
+Check that Python is available:
+
+```bash
+python3 --version
+```
+
+If `pip` is missing inside your active Python environment, bootstrap it from Python first:
+
+```bash
+python -m ensurepip --upgrade
+```
+
+Then install the project dependencies:
+
+```bash
+python -m pip install -r requirements.txt
+```
+
 ## Quick Start
 
 ```bash
-python -m venv .venv
+# If python3 is missing on macOS with Homebrew:
+brew install python
+
+python3 -m venv .venv
 source .venv/bin/activate
-pip install -r requirements.txt
+python -m ensurepip --upgrade
+python -m pip install -r requirements.txt
 cp .env.example .env
 ```
 
@@ -102,9 +202,13 @@ TRIDENT_USE_GPT=true python backend/cli.py decision:trident --symbol BTC-USD --i
 This path uses the required public Kraken and CoinGecko endpoints only:
 
 ```bash
-python -m venv .venv
+# If python3 is missing on macOS with Homebrew:
+brew install python
+
+python3 -m venv .venv
 source .venv/bin/activate
-pip install -r requirements.txt
+python -m ensurepip --upgrade
+python -m pip install -r requirements.txt
 cp .env.example .env
 python backend/cli.py trident:init
 python backend/cli.py crypto:backfill --symbol BTC-USD --interval 1h --lookback 2000
