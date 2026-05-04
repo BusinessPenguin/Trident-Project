@@ -2,7 +2,7 @@
 
 This public repo represents my work on research grade analysis on Crypto-Currency. Below contains instructions on setup along with some key commands.
 
-## What This Repo Does
+## What This Project Focuses on
 
 - Pulls crypto market and context data from public and key-based APIs.
 - Builds deterministic technical, fundamental, news, macro, calendar, and sentiment features.
