@@ -1,6 +1,6 @@
 # Project Trident Research Engine
 
-This public repo represents my work on research grade analysis on Crypto-Currency. Below contains instructions on setup along with some key commands.
+This public repo represents my recent work on research grade analysis within Crypto Currency markets. Below contains instructions on setup along with some key commands.
 
 ## What This Project Focuses on
 
